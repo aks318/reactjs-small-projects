@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import "./Stopwatch.css"
 
 export default function Stopwatch() {
-    var [mscount , setmsCount] = useState(0)
-    var [scount , setsCount] = useState(0)
+    var [time , setTime] = useState({ms : 0 , s : 0 , m : 0})
     var [timeOn , settimeOn] = useState(true)
 
     const [Interval , setInt] = useState()
@@ -18,26 +17,34 @@ export default function Stopwatch() {
         clearInterval(Interval) 
     }
 
+    var updatems = time.ms, updates = time.s , updatem = time.m
+
     const starttimer = () =>{
-        setmsCount(mscount = mscount + 1)
         
-        if (mscount >= 99){
-            setsCount(scount = scount + 1)
-            setmsCount(mscount = 0)
+        if (updates == 60){
+            updatem++
+            updates = 0
         }
+
+        if(updatems == 99){
+            updates++
+            updatems = 0
+        }
+
+        updatems++
+        return setTime({ms : updatems, s : updates, m : updatem})
         
     }
 
     const resetTime = () =>{
-        setmsCount(0)
-        setsCount(0)
+        setTime({ms : 0 , s : 0 , m : 0})
     }
 
     return (
             <div className="wrapper">
                 <h1>Stopwatch</h1>
                 <h2>ReactJS Stopwatch</h2>
-                <p><span id="seconds">{scount >= 10 ? scount : "0" + scount}</span>:<span id="tens">{mscount >= 10 ? mscount : "0" + mscount}</span></p>
+                <p><span id="seconds">{time.m >= 10 ? time.n : "0" + time.m}</span>:<span id="seconds">{time.s >= 10 ? time.s : "0" + time.s}</span>:<span id="tens">{time.ms >= 10 ? time.ms : "0" + time.ms}</span></p>
                 {timeOn ? <button onClick = {startTime}>Start</button> : <button onClick = {stopTime}>Stop</button>}
                 <button onClick = {resetTime}>Reset</button>
             </div> 
