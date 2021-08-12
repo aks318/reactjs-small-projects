@@ -21,12 +21,12 @@ export default function Stopwatch() {
 
     const starttimer = () =>{
         
-        if (updates == 60){
+        if (updates === 60){
             updatem++
             updates = 0
         }
 
-        if(updatems == 99){
+        if(updatems === 99){
             updates++
             updatems = 0
         }
