@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function BoxSearch() {
+
+    const [search , setSearch] = useState('')
     var arrColor = ['red' , 'black','red' , 'black','blue' ,'brown' ,'white', 'pink', 'white']
+    const [arrCopy , setArr] = useState(arrColor)
     const styleObj = {
         width : '200px',
         height : '200px',
@@ -9,16 +12,23 @@ function BoxSearch() {
         margin : '5px'
 
     }
+
+    useEffect (() =>{
+        setArr(arrColor.filter(val => val.startsWith(search)))
+    } , [search])
     return (
+        <>
+        <input type = "text" placeholder = "Seach..." onChange = {(e) => setSearch(e.target.value)}></input>
         <div style = {{display : 'flex'}}>
-            {arrColor.map(color =>{
+            {arrCopy.map((color , index) =>{
                 return(
-                    <div style = {{...styleObj , backgroundColor : `${color}`}}>
+                    <div key = {index} style = {{...styleObj , backgroundColor : `${color}`}}>
 
                     </div>
                 )
             })}
         </div>
+        </>
     )
 }
 
