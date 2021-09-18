@@ -4,6 +4,7 @@ import BoxContent from "./component/prac1/BoxContent";
 import Stopwatch from './component/prac2/StopWatch';
 import TableForm from './component/prac3/TableForm';
 import AgeIncrement from './component/prac4/AgeIncrement';
+import BoxSearch from './component/prac5/BoxSearch';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <button><Link  to = '/prac2'>Prac2</Link></button>
         <button><Link  to = '/prac3'>Prac3</Link></button>
         <button><Link  to = '/prac4'>Prac4</Link></button>
+        <button><Link  to = '/prac5'>Prac5</Link></button>
 
 
       <Switch>
@@ -25,6 +27,7 @@ function App() {
         
         <Route exact path = '/prac3'><TableForm /></Route>
         <Route exact path = '/prac4'><AgeIncrement /></Route>
+        <Route exact path = '/prac5'><BoxSearch /></Route>
       </Switch>
       </Router>
       
