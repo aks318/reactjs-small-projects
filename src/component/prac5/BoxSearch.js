@@ -14,7 +14,7 @@ function BoxSearch() {
     }
 
     useEffect (() =>{
-        setArr(arrColor.filter(val => val.startsWith(search)))
+        setArr(arrColor.filter(val => val.startsWith(search.toLowerCase())))
     } , [search])
     return (
         <>
