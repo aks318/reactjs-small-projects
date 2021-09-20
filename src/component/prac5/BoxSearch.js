@@ -19,7 +19,7 @@ function BoxSearch() {
     return (
         <>
         <input type = "text" placeholder = "Seach..." onChange = {(e) => setSearch(e.target.value)}></input>
-        <div style = {{display : 'flex'}}>
+        <div style = {{display : 'flex'}} data-testid="test-id">
             {arrCopy.map((color , index) =>{
                 return(
                     <div key = {index} style = {{...styleObj , backgroundColor : `${color}`}}>
