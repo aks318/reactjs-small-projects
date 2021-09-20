@@ -9,3 +9,10 @@ test('Initial rendering', () => {
     const parentDiv = screen.getByTestId('test-id')
     expect(parentDiv).toHaveStyle({display : 'flex'})
 })
+
+
+test('Check red div is rendering', () => {
+    render(<BoxSearch />)
+    const childDiv = screen.getAllByTestId("child-test-id")
+    expect(childDiv).toHaveLength(9)
+})

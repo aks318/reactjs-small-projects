@@ -22,7 +22,7 @@ function BoxSearch() {
         <div style = {{display : 'flex'}} data-testid="test-id">
             {arrCopy.map((color , index) =>{
                 return(
-                    <div key = {index} style = {{...styleObj , backgroundColor : `${color}`}}>
+                    <div key = {index} style = {{...styleObj , backgroundColor : `${color}`}} data-testid="child-test-id">
 
                     </div>
                 )
