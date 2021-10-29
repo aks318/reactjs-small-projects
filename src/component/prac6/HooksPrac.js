@@ -1,18 +1,29 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 
-const HooksPrac = () => {
-    const [count , setCount] = useState(0)
-
-    const incrementBy5 = () =>{
-        for (let i=0 ; i<5 ; i++){
-            setCount(prev => prev + 1)
+const initialState = 0
+    const reducer = (state , action) =>{
+        switch(action){
+            case 'increment':
+                return state + 1
+            case 'decrement':
+                return state - 1
+            case 'reset':
+                return initialState
+            default:
+                return state
         }
     }
 
+const HooksPrac = () => {
+    
+    const [count , dispatch] = useReducer(reducer , initialState)
+
     return (
         <div>
-            <h1>Count : {count}</h1>
-            <button onClick = {incrementBy5}>Increment Count by 5</button>
+            <h3>{count}</h3>
+            <button onClick = {() => dispatch('increment')}>Increment</button>
+            <button onClick = {() => dispatch('decrement')}>Decrement</button>
+            <button onClick = {() => dispatch('reset')}>Reset</button>
         </div>
     )
 }
